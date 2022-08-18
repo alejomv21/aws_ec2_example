@@ -16,13 +16,13 @@ const hubspotMongoSearchGet = async (req= request, res= response)=>{
       }
 
       await conectarDB(); 
-      let seacrh = await serachProperties('1640995200000', 0);
-      for(let j = 7400; j < seacrh.total; j = j + 100){
+      let seacrh = await serachProperties('1655134740000', 0);
+      for(let j = 0; j < seacrh.total; j = j + 100){
       let next = j
       console.log(j)
 
         console.log(next);
-        let listar = await serachProperties('1640995200000', next);
+        let listar = await serachProperties('1655134740000', next);
         //console.log(listar.paging.next.after);
         let contador = listar.results.length
         
@@ -48,7 +48,7 @@ const hubspotMongoSearchGet = async (req= request, res= response)=>{
                     Ciudad_del_Negocio: dealid.properties.ciudad_del_negocio, semanaAnual: 33, semanaMes: 3
                   }
                   const mongo = new DealsM(dealsMongoError);
-                  await mongo.save();
+                  //await mongo.save();
 
                   console.log(i);
             }else{
@@ -64,7 +64,7 @@ const hubspotMongoSearchGet = async (req= request, res= response)=>{
                 }
       
                 const mongo = new DealsM(dealsMongo);
-                await mongo.save();
+                //await mongo.save();
       
                 console.log(i);
             }
@@ -92,7 +92,7 @@ const hubspotMongoSearchGet = async (req= request, res= response)=>{
             }
   
             const mongoError = new DealsM(dealsMongoError);
-            await mongoError.save();
+            //await mongoError.save();
             console.log(i);
             }
             
