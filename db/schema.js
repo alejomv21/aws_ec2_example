@@ -49,7 +49,7 @@ const HubspotSchema = Schema({
 
 })
 
-let DealsM =  model('Prueba2', HubspotSchema)
+let DealsM =  model('Prueba3', HubspotSchema)
 
 
 module.exports = {DealsM}

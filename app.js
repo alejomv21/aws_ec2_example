@@ -29,7 +29,7 @@ app.use(express.static('public'))
 app.use(hubspotPathdelete, require('./routes/hubspotDeleteC'));
 app.use(hubspotPipelineA, require('./routes/husbpotPipelineEnergiaA'));
 app.use(hubspotMongo, require('./routes/hubspotMongo'));
-app.use(husbpotMongoSearch, require('./routes/hubspotMongoSearch'));
+app.use('/', require('./routes/hubspotMongoSearch'));
 
 //===========================================================================
 //PORT
