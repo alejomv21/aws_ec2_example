@@ -17,7 +17,7 @@ const hubspotMongoSearchGet = async (req= request, res= response)=>{
 
       await conectarDB(); 
       let seacrh = await serachProperties('1655134740000', 0);
-      for(let j = 0; j < seacrh.total; j = j + 100){
+      for(let j = 4000; j < seacrh.total; j = j + 100){
       let next = j
       console.log(j)
 
@@ -103,7 +103,7 @@ const hubspotMongoSearchGet = async (req= request, res= response)=>{
     console.log(listar.paging.next.after); */
 }
     console.log(listar.paging.next.after)
-    res.status(200).send(listar.paging.next.after)
+    res.status(200).send(listar.paging.next.after) 
     //res.status(200).send('hola mundo');
 }
 
