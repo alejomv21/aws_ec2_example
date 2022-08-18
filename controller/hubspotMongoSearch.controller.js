@@ -17,7 +17,7 @@ const hubspotMongoSearchGet = async (req= request, res= response)=>{
 
       await conectarDB(); 
       let seacrh = await serachProperties('1655134740000', 0);
-      for(let j = 4500; j < seacrh.total; j = j + 100){
+      for(let j = 5800; j < seacrh.total; j = j + 100){
       let next = j
       console.log(j)
 
