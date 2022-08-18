@@ -48,7 +48,7 @@ const hubspotMongoSearchGet = async (req= request, res= response)=>{
                     Ciudad_del_Negocio: dealid.properties.ciudad_del_negocio, semanaAnual: 33, semanaMes: 3
                   }
                   const mongo = new DealsM(dealsMongoError);
-                  //await mongo.save();
+                  await mongo.save();
 
                   console.log(i);
             }else{
@@ -64,7 +64,7 @@ const hubspotMongoSearchGet = async (req= request, res= response)=>{
                 }
       
                 const mongo = new DealsM(dealsMongo);
-                //await mongo.save();
+                await mongo.save();
       
                 console.log(i);
             }
@@ -92,7 +92,7 @@ const hubspotMongoSearchGet = async (req= request, res= response)=>{
             }
   
             const mongoError = new DealsM(dealsMongoError);
-            //await mongoError.save();
+            await mongoError.save();
             console.log(i);
             }
             
