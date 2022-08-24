@@ -16,13 +16,13 @@ const hubspotMongoSearchGet = async (req= request, res= response)=>{
       }
 
       await conectarDB(); 
-      let seacrh = await serachProperties('1655134740000', 0);
-      for(let j = 5800; j < seacrh.total; j = j + 100){
+      let seacrh = await serachProperties('1640995200000', 0);
+      for(let j = 7700; j < seacrh.total; j = j + 100){
       let next = j
       console.log(j)
 
         console.log(next);
-        let listar = await serachProperties('1655134740000', next);
+        let listar = await serachProperties('1640995200000', next);
         //console.log(listar.paging.next.after);
         let contador = listar.results.length
         
@@ -45,10 +45,10 @@ const hubspotMongoSearchGet = async (req= request, res= response)=>{
                     Deal_ID: listar.results[i].id, Deal_Name: dealid.properties.dealname, Associated_Company: company, Deal_Stage: etapa,
                     Amount_in_company_currency: dealid.properties.amount, Close_Date: dealid.properties.closedate, producto: dealid.properties.producto,
                     HubSpot_Team: 'No registra Equipo', Deal_owner: 'Propietario Eliminado', Create_Date: dealid.properties.createdate, Pipeline: Pipeline, 
-                    Ciudad_del_Negocio: dealid.properties.ciudad_del_negocio, semanaAnual: 33, semanaMes: 3
+                    Ciudad_del_Negocio: dealid.properties.ciudad_del_negocio, semana: 'Actual'
                   }
                   const mongo = new DealsM(dealsMongoError);
-                  await mongo.save();
+                  //await mongo.save();
 
                   console.log(i);
             }else{
@@ -60,7 +60,7 @@ const hubspotMongoSearchGet = async (req= request, res= response)=>{
                   Deal_ID: listar.results[i].id, Deal_Name: dealid.properties.dealname, Associated_Company: company, Deal_Stage: etapa,
                   Amount_in_company_currency: dealid.properties.amount, Close_Date: dealid.properties.closedate, producto: dealid.properties.producto,
                   HubSpot_Team: owners.team, Deal_owner: owners.name, Create_Date: dealid.properties.createdate, Pipeline: Pipeline, 
-                  Ciudad_del_Negocio: dealid.properties.ciudad_del_negocio, semanaAnual: 33, semanaMes: 3
+                  Ciudad_del_Negocio: dealid.properties.ciudad_del_negocio, semana: 'Actual'
                 }
       
                 const mongo = new DealsM(dealsMongo);
@@ -88,7 +88,7 @@ const hubspotMongoSearchGet = async (req= request, res= response)=>{
               Deal_ID: listar.results[i].id, Deal_Name: dealid.properties.dealname, Associated_Company: company, Deal_Stage: etapa,
               Amount_in_company_currency: dealid.properties.amount, Close_Date: dealid.properties.closedate, producto: dealid.properties.producto,
               HubSpot_Team: 'No registra Equipo', Deal_owner: 'Propietario Eliminado', Create_Date: dealid.properties.createdate, Pipeline: Pipeline, 
-              Ciudad_del_Negocio: dealid.properties.ciudad_del_negocio, semanaAnual: 32, semanaMes: 2
+              Ciudad_del_Negocio: dealid.properties.ciudad_del_negocio, semana: 'Actual'
             }
   
             const mongoError = new DealsM(dealsMongoError);
@@ -109,7 +109,18 @@ const hubspotMongoSearchGet = async (req= request, res= response)=>{
 
 
 const hubspotMongoSearchPost = async(req= request, res= response)=>{
-    
+    const conectarDB = async()=>{
+      await dbConection();
+    }
+
+    let queryDelete ={
+      producto: "Repuestos"
+    }
+
+    await conectarDB(); 
+    //const eliminar = await DealsM.deleteMany({semana: "Anterior"});
+    let update = await DealsM.updateMany({semana: "Actual"}, {$set:{semana: "Anterior"}});
+    console.log(update);
     res.status(200).send('firebase function activa POST');
 }
 

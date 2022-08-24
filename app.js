@@ -2,14 +2,12 @@
 //PAQUETES EXTERNOS
 const express = require('express');
 const cors = require('cors');
+const routerApi = require('./routes/routesGeneral');
 require('dotenv').config();
 
 //===========================================================================
 //RUTAS INTERNAS
-const hubspotPathdelete = '/hubspotDelete';
-const hubspotPipelineA = '/hubspotpipeline';
-const hubspotMongo = '/hubspotMongo';
-const husbpotMongoSearch = '/hubspotMongoSearch';
+
 
 
 const port = process.env.PORT;
@@ -26,10 +24,8 @@ app.use(express.static('public'))
 
 //===========================================================================
 //ROUTES
-app.use(hubspotPathdelete, require('./routes/hubspotDeleteC'));
-app.use(hubspotPipelineA, require('./routes/husbpotPipelineEnergiaA'));
-app.use(hubspotMongo, require('./routes/hubspotMongo'));
-app.use(husbpotMongoSearch, require('./routes/hubspotMongoSearch'));
+
+routerApi(app)
 
 //===========================================================================
 //PORT

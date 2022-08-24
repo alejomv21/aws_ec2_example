@@ -40,16 +40,13 @@ const HubspotSchema = Schema({
     Ciudad_del_Negocio: {
         type: String
     },
-    semanaAnual: {
+    semana:{
         type: String
-    },
-    semanaMes: {
-        type: String
-    },
+    }
 
 })
 
-let DealsM =  model('Prueba2', HubspotSchema)
+let DealsM =  model('deals_pruebas', HubspotSchema)
 
 
 module.exports = {DealsM}
